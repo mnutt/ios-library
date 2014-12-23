@@ -727,7 +727,7 @@
     path = [path stringByAppendingString:k_url_acces_shared_api];
     
     OCWebDAVClient *request = [[OCWebDAVClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
-    //request = [self getRequestWithCredentials:request];
+    request = [self getRequestWithCredentials:request];
     request.securityPolicy = _securityPolicy;
     
     [request listSharedByServer:path onCommunication:sharedOCCommunication success:^(OCHTTPRequestOperation *operation, id responseObject) {
@@ -786,7 +786,7 @@
     serverPath = [serverPath stringByAppendingString:k_url_acces_shared_api];
     
     OCWebDAVClient *request = [[OCWebDAVClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
-    //request = [self getRequestWithCredentials:request];
+    request = [self getRequestWithCredentials:request];
     request.securityPolicy = _securityPolicy;
     
     [request shareByLinkFileOrFolderByServer:serverPath andPath:filePath onCommunication:sharedOCCommunication success:^(OCHTTPRequestOperation *operation, id responseObject) {
@@ -861,7 +861,7 @@
     path = [path stringByAppendingString:[NSString stringWithFormat:@"/%d",idRemoteShared]];
     
     OCWebDAVClient *request = [[OCWebDAVClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
-    //request = [self getRequestWithCredentials:request];
+    request = [self getRequestWithCredentials:request];
     request.securityPolicy = _securityPolicy;
     
     [request unShareFileOrFolderByServer:path onCommunication:sharedOCCommunication success:^(OCHTTPRequestOperation *operation, id responseObject) {
@@ -885,7 +885,7 @@
     path = [path stringByAppendingString:[NSString stringWithFormat:@"/%d",idRemoteShared]];
     
     OCWebDAVClient *request = [[OCWebDAVClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
-    //request = [self getRequestWithCredentials:request];
+    request = [self getRequestWithCredentials:request];
     request.securityPolicy = _securityPolicy;
     
     [request isShareFileOrFolderByServer:path onCommunication:sharedOCCommunication success:^(OCHTTPRequestOperation *operation, id responseObject) {
