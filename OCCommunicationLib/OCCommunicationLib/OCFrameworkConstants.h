@@ -41,7 +41,7 @@
 #define k_version_support_shared [NSArray arrayWithObjects:  @"5", @"0", @"27", nil]
 
 //Version of the server that support cookies
-#define k_version_support_cookies [NSArray arrayWithObjects:  @"7", @"0", @"0", nil]
+#define k_version_support_cookies [NSArray arrayWithObjects:  @"10", @"0", @"0", nil]
 
 //Name of the session using for upload files with NSURLSession
 #define k_session_name @"com.owncloud.upload.session"
