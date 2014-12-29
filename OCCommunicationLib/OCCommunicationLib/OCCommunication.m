@@ -758,7 +758,7 @@
     serverPath = [serverPath stringByAppendingString:k_url_acces_shared_api];
     
     OCWebDAVClient *request = [[OCWebDAVClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
-   // request = [self getRequestWithCredentials:request];
+    request = [self getRequestWithCredentials:request];
     request.securityPolicy = _securityPolicy;
     
     [request listSharedByServer:serverPath andPath:path onCommunication:sharedOCCommunication success:^(OCHTTPRequestOperation *operation, id responseObject) {
