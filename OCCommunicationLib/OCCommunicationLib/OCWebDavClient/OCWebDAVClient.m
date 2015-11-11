@@ -397,6 +397,15 @@ NSString const *OCWebDAVModificationDateKey	= @"modificationdate";
                failure:(void(^)(OCHTTPRequestOperation *, NSError *))failure {
     _requestMethod = @"HEAD";
     NSMutableURLRequest *request = [self requestWithMethod:_requestMethod path:path parameters:nil];
+    NSURLComponents *url = [NSURLComponents componentsWithString:path];
+    
+    if(url.user.length > 0 && url.password.length > 0) {
+        NSString *basicAuthCredentials = [NSString stringWithFormat:@"%@:%@", _user, _password];
+        [request addValue:[NSString stringWithFormat:@"Basic %@", [UtilsFramework AFBase64EncodedStringFromString:basicAuthCredentials]] forHTTPHeaderField:@"Authorization"];
+        url.user = nil;
+    }
+    NSLog(@"REQUEST URL: %@", [request allHTTPHeaderFields]);
+    
     OCHTTPRequestOperation *operation = [self mr_operationWithRequest:request onCommunication:sharedOCCommunication success:success failure:failure];
     
     [operation setTypeOfOperation:NavigationQueue];

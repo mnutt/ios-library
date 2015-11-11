@@ -29,15 +29,16 @@
 @implementation NSString (encode)
 - (NSString *)encodeString:(NSStringEncoding)encoding
 {
+    NSURLComponents *components = [NSURLComponents componentsWithString:self];
     
-    CFStringRef stringRef = CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self,
+    CFStringRef stringRef = CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[components path],
                                                                     NULL, (CFStringRef)@";?@&=$+{}<>,!'*",
                                                                     CFStringConvertNSStringEncodingToEncoding(encoding));
     
     NSString *output = (NSString *)CFBridgingRelease(stringRef);
-                                                                    
-                                                                    
-    
+
+
+
 
     int countCharactersAfterPercent = -1;
     
@@ -61,9 +62,8 @@
         }
     }
     
-   // NSLog(@"output: %@", output);
-    
-    return output;
+    components.path = output;
+    return [components string];
 }
 
 @end
